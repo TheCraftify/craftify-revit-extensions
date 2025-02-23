@@ -1,0 +1,59 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Clean Nuke Debug",
+			"command": "dotnet",
+			"type": "shell",
+			"args": [
+				"clean",
+				"--configuration",
+				"Debug",
+				"./publish"
+			],
+			"group": "none",
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Rebuild Nuke Debug",
+			"command": "dotnet",
+			"type": "shell",
+			"dependsOn": "Clean Nuke Debug",
+			"args": [
+				"build",
+				"--configuration",
+				"Debug",
+				"./publish"
+			],
+			"group": "build",
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Clean Debug 2025",
+			"command": "dotnet",
+			"type": "shell",
+			"args": [
+				"clean",
+				"--configuration",
+				"Debug 2025",
+				"./source/Craftify.Revit.Extensions.csproj"
+			],
+			"group": "none",
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Rebuild Debug 2025",
+			"command": "dotnet",
+			"type": "shell",
+			"dependsOn": "Clean Debug 2025",
+			"args": [
+				"build",
+				"--configuration",
+				"Debug 2025",
+				"./source/Craftify.Revit.Extensions.csproj"
+			],
+			"group": "build",
+			"problemMatcher": "$msCompile"
+		}
+	]
+}

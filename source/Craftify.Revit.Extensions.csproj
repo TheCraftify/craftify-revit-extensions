@@ -68,7 +68,7 @@
 		<PackageId>$(AssemblyName)</PackageId>
 		<Title>$(AssemblyName)</Title>
 		<Authors>Craftify</Authors>
-		<Description>Revit API Elements Extensions</Description>
+		<Description>Revit API Extensions</Description>
 		<Copyright></Copyright>
 		<RepositoryUrl>https://github.com/TheCraftify/craftify-revit-extensions</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
