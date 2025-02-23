@@ -1,0 +1,8 @@
+{
+  "$schema": "build.schema.json",
+  "Solution": "Craftify.Revit.Extensions.sln",
+  "NugetSource": "https://nuget.pkg.github.com/TheCraftify/index.json",
+  "NugetSourceName": "craftify",
+  "GitGlobalUserEmail": "makslibovich@gmail.com",
+  "GitHubToken": "v1:BD30TCXKX7818WwXqmnSTU/9W9z8bHoGmQ8ZnCorMs0v9pLUQIJAEqhFhqQzNklk"
+}
