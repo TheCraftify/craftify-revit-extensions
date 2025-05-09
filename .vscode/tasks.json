@@ -29,6 +29,33 @@
 			"problemMatcher": "$msCompile"
 		},
 		{
+			"label": "Clean Debug 2024",
+			"command": "dotnet",
+			"type": "shell",
+			"args": [
+				"clean",
+				"--configuration",
+				"Debug 2024",
+				"./source/Craftify.Revit.Extensions.csproj"
+			],
+			"group": "none",
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Rebuild Debug 2024",
+			"command": "dotnet",
+			"type": "shell",
+			"dependsOn": "Clean Debug 2024",
+			"args": [
+				"build",
+				"--configuration",
+				"Debug 2024",
+				"./source/Craftify.Revit.Extensions.csproj"
+			],
+			"group": "build",
+			"problemMatcher": "$msCompile"
+		},
+		{
 			"label": "Clean Debug 2025",
 			"command": "dotnet",
 			"type": "shell",

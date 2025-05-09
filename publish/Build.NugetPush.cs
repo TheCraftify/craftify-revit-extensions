@@ -5,7 +5,7 @@ sealed partial class Build
         _ =>
             _.TriggeredBy(NugetPack)
                 .Requires(() => GitHubToken)
-                .Requires(() => NugetSourceName)
+                .Requires(() => NugetSource)
                 .Executes(() =>
                 {
                     foreach (var package in ArtifactsDirectory.GlobFiles("**/*.nupkg"))
@@ -13,7 +13,7 @@ sealed partial class Build
                         DotNetNuGetPush(options =>
                             options
                                 .SetTargetPath(package)
-                                .SetSource(NugetSourceName)
+                                .SetSource(NugetSource)
                                 .SetApiKey(GitHubToken)
                                 .SetSkipDuplicate(true)
                         );

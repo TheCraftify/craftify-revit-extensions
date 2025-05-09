@@ -3,9 +3,10 @@
 		<LangVersion>latest</LangVersion>
 		<PlatformTarget>x64</PlatformTarget>
 		<ImplicitUsings>true</ImplicitUsings>
-		<UseWPF>true</UseWPF>
 		<Nullable>enable</Nullable>
-		<Configurations>Debug 2020;Debug 2021;Debug 2022;Debug 2023;Debug 2024;Debug 2025;Release 2020;Release 2021;Release 2022;Release 2023;Release 2024;Release 2025;Test 2025</Configurations>
+		<Configurations>Debug 2020;Debug 2021;Debug 2022;Debug 2023;Debug 2024;Debug 2025;Debug 2026</Configurations>
+		<Configurations>$(Configurations);Release 2020;Release 2021;Release 2022;Release 2023;Release 2024;Release 2025;Release 2026</Configurations>
+		<Configurations>$(Configurations);Test 2025; Test 2026</Configurations>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="!$(Configuration.Contains('Test'))">
@@ -16,13 +17,11 @@
 	<PropertyGroup Condition="$(Configuration.Contains('Debug'))">
 		<DebugType>portable</DebugType>
 		<DebugSymbols>true</DebugSymbols>
-		<SharingType>Local</SharingType>
 		<DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
 	</PropertyGroup>
 	<PropertyGroup Condition="$(Configuration.Contains('Release'))">
 		<Optimize>true</Optimize>
 		<DebugType>none</DebugType>
-		<SharingType>Publish</SharingType>
 		<DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
 	</PropertyGroup>
 
@@ -56,6 +55,11 @@
 		<TargetFramework>net8.0-windows</TargetFramework>
 		<EnableWindowsTargeting>true</EnableWindowsTargeting>
 		<DefineConstants>$(DefineConstants);Revit2025</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="$(Configuration.Contains('2026'))">
+		<RevitVersion>2026</RevitVersion>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<DefineConstants>$(DefineConstants);Revit2026</DefineConstants>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="!$(TargetFramework.StartsWith('net4'))">
