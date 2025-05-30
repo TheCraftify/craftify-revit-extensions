@@ -57,6 +57,8 @@ dlldata.c
 # Benchmark Results
 BenchmarkDotNet.Artifacts/
 
+.idea/
+
 # .NET Core
 project.lock.json
 project.fragment.lock.json
