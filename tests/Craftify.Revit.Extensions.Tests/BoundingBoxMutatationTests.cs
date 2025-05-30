@@ -166,17 +166,28 @@ public class BoundingBoxMutatationTests
     }
 
     [Test]
-    public void Clone_ShouldReturnNewBoundingBoxWithSameProperties()
+    public void Clone_ShouldDoDeepCopyBoundingBox()
     {
-        var box = BoundingBox.ByCorners(min: new XYZ(0, 0, 0), max: new XYZ(5, 5, 5));
         var transform = Transform.CreateTranslation(new XYZ(1, 2, 3));
-        box.Transform = transform;
+        var originalBox = BoundingBox.ByCorners(
+            min: new XYZ(0, 0, 0),
+            max: new XYZ(5, 5, 5),
+            transform: transform
+        );
 
-        var clonedBox = box.Clone();
+        var clonedBox = originalBox.Clone();
 
-        clonedBox.Min.IsAlmostEqualTo(box.Min).ShouldBeTrue();
-        clonedBox.Max.IsAlmostEqualTo(box.Max).ShouldBeTrue();
-        clonedBox.Transform.AlmostEqual(box.Transform).ShouldBeTrue();
-        clonedBox.ShouldNotBeSameAs(box);
+        clonedBox.Min.IsAlmostEqualTo(originalBox.Min).ShouldBeTrue();
+        clonedBox.Max.IsAlmostEqualTo(originalBox.Max).ShouldBeTrue();
+        clonedBox.Transform.AlmostEqual(originalBox.Transform).ShouldBeTrue();
+
+        clonedBox.Min = new XYZ(10, 10, 10);
+        clonedBox.Max = new XYZ(20, 20, 20);
+        var clonedBoxTransform = clonedBox.Transform;
+        clonedBoxTransform.BasisX = new XYZ(1.5, 0, 0);
+
+        originalBox.Min.IsAlmostEqualTo(clonedBox.Min).ShouldBeFalse();
+        originalBox.Max.IsAlmostEqualTo(clonedBox.Max).ShouldBeFalse();
+        originalBox.Transform.BasisX.IsAlmostEqualTo(clonedBoxTransform.BasisX).ShouldBeFalse();
     }
 }
