@@ -4,19 +4,31 @@ namespace Craftify.Revit.Extensions.Geometry;
 
 public static class PointsExtensions
 {
-    public static XYZ MaxByCoordinates(this ICollection<XYZ> points)
+    public static XYZ MaxByCoordinates(this IEnumerable<XYZ> points)
     {
-        var maxX = points.Max(x => x.X);
-        var maxY = points.Max(x => x.Y);
-        var maxZ = points.Max(x => x.Z);
+        var maxX = double.MinValue;
+        var maxY = double.MinValue;
+        var maxZ = double.MinValue;
+        foreach (var point in points)
+        {
+            maxX = Math.Max(maxX, point.X);
+            maxY = Math.Max(maxY, point.Y);
+            maxZ = Math.Max(maxZ, point.Z);
+        }
         return new XYZ(maxX, maxY, maxZ);
     }
 
-    public static XYZ MinByCoordinates(this ICollection<XYZ> points)
+    public static XYZ MinByCoordinates(this IEnumerable<XYZ> points)
     {
-        var minX = points.Min(x => x.X);
-        var minY = points.Min(x => x.Y);
-        var minZ = points.Min(x => x.Z);
+        var minX = double.MaxValue;
+        var minY = double.MaxValue;
+        var minZ = double.MaxValue;
+        foreach (var point in points)
+        {
+            minX = Math.Min(minX, point.X);
+            minY = Math.Min(minY, point.Y);
+            minZ = Math.Min(minZ, point.Z);
+        }
         return new XYZ(minX, minY, minZ);
     }
 }
