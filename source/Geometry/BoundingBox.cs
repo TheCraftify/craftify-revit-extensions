@@ -11,6 +11,6 @@ public static class BoundingBox
         {
             Min = min,
             Max = max,
-            Transform = transform,
+            Transform = transform ?? Transform.Identity,
         };
 }
