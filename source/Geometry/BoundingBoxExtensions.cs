@@ -50,7 +50,7 @@ public static class BoundingBoxExtensions
         ApplyTransform applyTransform = ApplyTransform.No
     )
     {
-        if (boundingBoxes == null)
+        if (boundingBoxes is null)
         {
             throw new ArgumentNullException(nameof(boundingBoxes));
         }
@@ -80,6 +80,6 @@ public static class BoundingBoxExtensions
             BoundingBoxSide.Length => XYZ.BasisX,
             BoundingBoxSide.Width => XYZ.BasisY,
             BoundingBoxSide.Height => XYZ.BasisZ,
-            _ => throw new InvalidOperationException($"Cannot use ${side.ToString()}"),
+            _ => throw new InvalidOperationException($"Cannot use ${side}"),
         };
 }
