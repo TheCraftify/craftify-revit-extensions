@@ -4,7 +4,7 @@ using Shouldly;
 
 namespace Craftify.Revit.Extensions.Tests;
 
-public class BoundingBoxMutatationTests
+public class BoundingBoxMutationsTests
 {
     [Test]
     public void MoveBy_ShouldReturnNewMovedBoundingBox()
